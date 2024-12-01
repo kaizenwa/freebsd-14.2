@@ -2265,9 +2265,272 @@ mi_startup
 
 ### SI\_SUB\_VNET
 
+#### nfs\_vnetinit (sys/fs/nfs/nfs\_commonport.c:874)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit <-- Here
+```
+
+#### vnet\_init\_prelink (sys/net/vnet.c:310)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink <-- Here
+```
+
+#### vnet0\_init (sys/net/vnet.c:322)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init <-- Here
+```
+
+#### frag6\_slowtimo\_init (sys/netinet6/frag6.c:1004)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init
+    frag6_slowtimo_init <-- Here
+```
+
+#### svc\_rpc\_gss\_vnetinit (sys/rpc/rpcsec\_gss/svc\_rpcsec\_gss.c:223)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init
+    frag6_slowtimo_init
+    svc_rpc_gss_vnetinit <-- Here
+```
+
+#### rpctls\_vnetinit (sys/rpc/rpcsec\_tls/rpctls\_impl.c:99)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init
+    frag6_slowtimo_init
+    svc_rpc_gss_vnetinit
+    rpctls_vnetinit <-- Here
+```
+
+#### fhanew\_init (sys/fs/nfsserver/nfs\_fha\_new.c:105)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init
+    frag6_slowtimo_init
+    svc_rpc_gss_vnetinit
+    rpctls_vnetinit
+    fhanew_init <-- Here
+```
+
+#### nfsrv\_vnetinit (sys/fs/nfsserver/nfs\_nfsdport.c:7176)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init
+    frag6_slowtimo_init
+    svc_rpc_gss_vnetinit
+    rpctls_vnetinit
+    fhanew_init
+    nfsrv_vnetinit <-- Here
+```
+
+#### vnet\_init\_done (sys/net/vnet.c:338)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init
+    frag6_slowtimo_init
+    svc_rpc_gss_vnetinit
+    rpctls_vnetinit
+    fhanew_init
+    nfsrv_vnetinit
+    vnet_init_done <-- Here
+
+341: curvnet = NULL;
+```
+
+#### vnet\_sysinit\_done (sys/net/vnet.c:364)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_vnetinit
+    vnet_init_prelink
+    vnet0_init
+    frag6_slowtimo_init
+    svc_rpc_gss_vnetinit
+    rpctls_vnetinit
+    fhanew_init
+    nfsrv_vnetinit
+    vnet_init_done
+    vnet_sysinit_done <-- Here
+
+367: return;
+```
+
 ### SI\_SUB\_INTRINSIC
 
+#### f00f\_hack (sys/i386/i386/machdep.c:1807)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    f00f_hack <-- Here
+```
+
+#### proc0\_init (sys/kern/init\_main.c:463)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    f00f_hack
+    proc0_init <-- Here
+```
+
+#### proc0\_post (sys/kern/init\_main.c:652)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    f00f_hack
+    proc0_init
+    proc0_post <-- Here
+```
+
+#### geom\_event\_init (sys/geom/geom\_event.c:108)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    f00f_hack
+    proc0_init
+    proc0_post
+    geom_event_init <-- Here
+```
+
+#### fork\_init (sys/kern/kern\_fork.c:1238)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    f00f_hack
+    proc0_init
+    proc0_post
+    geom_event_init
+    fork_init <-- Here
+```
+
+#### shutdown\_conf (sys/kern/kern\_shutdown.c:262)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    f00f_hack
+    proc0_init
+    proc0_post
+    geom_event_init
+    fork_init
+    shutdown_conf <-- Here
+```
+
 ### SI\_SUB\_VM\_CONF
+
+#### vm\_stats\_init (sys/vm/vm\_meter.c:559)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vm_stats_init <-- Here
+```
+
+#### uma\_startup3 (sys/vm/uma\_core.c:3204)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vm_stats_init
+    uma_startup3 <-- Here
+```
+
+#### max\_ldt\_segment (sys/amd64/amd64/sys\_machdep.c:82)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vm_stats_init
+    uma_startup3
+    max_ldt_segment <-- Here
+```
+
+#### ffs\_rawread\_setup (sys/ufs/ffs/ffs\_rawread.c:92)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vm_stats_init
+    uma_startup3
+    max_ldt_segment
+    ffs_rawread_setup <-- Here
+```
+
+#### vm\_page\_init\_cache\_zones (sys/vm/vm\_page.c:211)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vm_stats_init
+    uma_startup3
+    max_ldt_segment
+    ffs_rawread_setup
+    vm_page_init_cache_zones <-- Here
+```
 
 ### SI\_SUB\_DDB\_SERVICES
 
@@ -2281,23 +2544,924 @@ mi_startup
 
 ### SI\_SUB\_CREATE\_INIT
 
+#### create\_init (sys/kern/init\_main.c:815)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    create_init <-- Here
+```
+
 ### SI\_SUB\_SCHED\_IDLE
+
+#### idle\_setup (sys/kern/kern\_idle.c:52)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    idle_setup <-- Here
+```
 
 ### SI\_SUB\_MBUF
 
+#### mbuf\_init (sys/kern/kern\_mbuf.c:348)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    mbuf_init <-- Here
+```
+
+#### sfstat\_init (sys/kern/kern\_sendfile.c:143)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    mbuf_init
+    sfstat_init <-- Here
+```
+
+#### sf\_buf\_init (sys/kern/subr\_sfbuf.c:83)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    mbuf_init
+    sfstat_init
+    sf_buf_init <-- Here
+```
+
 ### SI\_SUB\_INTR
+
+#### intr\_irq\_init (sys/kern/subr\_intr.c:190)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init <-- Here
+```
+
+#### intr\_map\_init (sys/kern/subr\_intr.c:1759)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init <-- Here
+```
+
+#### xen\_hvm\_cpu\_init (sys/x86/xen/hvm.c:414)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init <--  Here
+```
+
+#### intr\_init (sysy/x86/x86/intr\_machdep.c:467)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init <-- Here
+```
+
+#### xen\_intr\_init (sys/dev/xen/bus/xen\_intr.c:445)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init <-- Here
+```
+
+#### apic\_setup\_io (sys/x86/x86/local\_apic.c:1926)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init
+    apic_setup_io <-- Here
+```
+
+#### atpic\_init (sys/x86/x86/intr\_machdep.c:504)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init
+    apic_setup_io
+    atpic_init <-- Here
+```
+
+#### intr\_init\_sources (sys/x86/x86/intr\_machdep.c:164)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init
+    apic_setup_io
+    atpic_init
+    intr_init_sources <-- Here
+```
+
+#### xen\_intrcnt\_init (sys/x86/xen/xen\_arch\_intr.c:61)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init
+    apic_setup_io
+    atpic_init
+    intr_init_sources
+    xen_intrcnt_init <-- Here
+```
+
+#### mp\_ipi\_intrcnt (sys/x86/xen/xen\_arch\_intr.c:1706)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init
+    apic_setup_io
+    atpic_init
+    intr_init_sources
+    xen_intrcnt_init
+    mp_ipi_intrcnt <-- Here
+```
+
+#### lapic\_intrcnt (sys/x86/x86/local\_apic.c:790)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init
+    apic_setup_io
+    atpic_init
+    intr_init_sources
+    xen_intrcnt_init
+    mp_ipi_intrcnt
+    lapic_intrcnt <-- Here
+```
+
+#### intr\_init\_final (sys/x86/x86/intr\_machdep.c:478)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    intr_irq_init
+    intr_map_init
+    xen_hvm_cpu_init
+    intr_init
+    xen_intr_init
+    apic_setup_io
+    atpic_init
+    intr_init_sources
+    xen_intrcnt_init
+    mp_ipi_intrcnt
+    lapic_intrcnt
+    intr_init_final <--  Here
+```
 
 ### SI\_SUB\_TASKQ
 
+#### vt\_init\_logos (sys/dev/vt/vt\_cpulogos.c:207)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vt_init_logos <-- Here
+```
+
+#### fxent\_pool\_timer\_init (sys/dev/random/fenestrasX/fx\_pool.c:601)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vt_init_logos
+    fxent_pool_timer_init <-- Here
+```
+
+#### uma\_startup4 (sys/vm/uma\_core.c:3221)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    vt_init_logos
+    fxent_pool_timer_init
+    uma_startup4 <-- Here
+```
+
 ### SI\_SUB\_EPOCH
+
+#### epoch\_init (sys/kern/subr\_epoch.c:300)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    epoch_init <-- Here
+```
+
+#### rs\_epoch\_init (sys/dev/random/random\_harvestq.c:221)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    epoch_init
+    rs_epoch_init <-- Here
+```
+
+#### if\_epochalloc (sys/net/if.c:964)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    epoch_init
+    rs_epoch_init
+    if_epochalloc <-- Here
+```
 
 ### SI\_SUB\_SMP
 
+#### invl\_scoreboard\_init (sys/amd64/adm64/mp\_machdep.c:526)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init <-- Here
+```
+
+#### release\_aps (sys/x86/x86/mp\_x86.c:1690)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps <-- Here
+```
+
+#### intr\_irq\_shuffle (sys/kern/subr\_intr.c:1262)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle <-- Here
+```
+
+#### kcsan\_enable (sys/kern/subr\_csan.c:87)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable <--  Here
+
+90-91: printf("Enabling KCSCAN, expect reduced performance.\n");
+       kcsan_enabled = true;
+```
+
+#### xen\_setup\_cpus (sys/x86/xen/xen\_apic.c:337)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus <-- Here
+```
+
+#### intr\_smp\_startup (sys/x86/x86/intr\_machdep.c:652)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup <-- Here
+```
+
+#### netisr\_start (sys/net/netisr.c:1353)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start <-- Here
+```
+
+#### kvm\_clock\_init\_smp (sys/dev/kvm\_clock/kvm\_clock.c:112)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp <-- Here
+```
+
+#### intel\_ntb\_msix\_ready (sys/dev/ntb/ntb\_hw/ntb\_hw\_intel.c:2981)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready <-- Here
+
+2984: msix_ready = 1;
+```
+
+#### vmbus\_sysinit (sys/dev/hyperv/vmbus/vmbus.c:1698)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit <-- Here
+```
+
+#### lock\_prof\_init\_type (sys/kern/subr\_lock.c:284)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type <-- Here
+```
+
+#### dtrace\_debug\_init (sys/cddl/dev/dtrace/dtrace\_debug.c:65)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init <-- Here
+```
+
+#### dtrace\_ap\_start (sys/cddl/dev/dtrace/dtrace\_load.c:25)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start <-- Here
+```
+
+#### smp\_after\_idle\_runnable (sys/x86/x86/mp\_x86.c:1145)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable <-- Here
+```
+
+#### hw\_mds\_recalculate\_boot (sys/x86/x86/cpu\_machdep.c:1213)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot <-- Here
+```
+
+#### taa\_recalculate\_boot (sys/x86/x86/cpu\_machdep.c:1355)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot
+    taa_recalculate_boot <-- Here
+```
+
+#### intr\_balance\_init (sys/x86/x86/intr\_machdep.c:772)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot
+    taa_recalculate_boot
+    intr_balance_init <-- Here
+```
+
+#### init\_TSC\_tc (sys/x86/x86/tsc.c:653)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot
+    taa_recalculate_boot
+    intr_balance_init
+    init_TSC_tc <-- Here
+```
+
+#### epoch\_init\_smp (sys/kern/subr\_epoch.c:333)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot
+    taa_recalculate_boot
+    intr_balance_init
+    init_TSC_tc
+    epoch_init_smp <-- Here
+
+335: inited = 2;
+```
+
+#### tcp\_rs\_init (sys/netinet/tcp\_ratelimit.c:1773)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot
+    taa_recalculate_boot
+    intr_balance_init
+    init_TSC_tc
+    epoch_init_smp
+    tcp_rs_init <-- Here
+```
+
+#### vmm\_handler (sys/amd64/vmm/vmm.c:437)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot
+    taa_recalculate_boot
+    intr_balance_init
+    init_TSC_tc
+    epoch_init_smp
+    tcp_rs_init
+    vmm_handler <-- Here
+```
+
+#### ucode\_release (sys/x86/x86/ucode.c:233)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    invl_scoreboard_init
+    release_aps
+    intr_irq_shuffle
+    kcsan_enable
+    xen_setup_cpus
+    intr_smp_startup
+    netisr_start
+    kvm_clock_init_smp
+    intel_ntb_msix_ready
+    vmbus_sysinit
+    lock_prof_init_type
+    dtrace_debug_init
+    dtrace_ap_start
+    smp_after_idle_runnable
+    hw_mds_recalculate_boot
+    taa_recalculate_boot
+    intr_balance_init
+    init_TSC_tc
+    epoch_init_smp
+    tcp_rs_init
+    vmm_handler
+    ucode_release <-- Here
+```
+
 ### SI\_SUB\_SOFTINTR
+
+#### netisr\_init (sys/net/netisr.c:1301)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    netisr_init <-- Here
+```
+
+#### start\_softintr (sys/kern/kern\_intr.c:1601)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    netisr_init
+    start_softintr <-- Here
+```
+
+#### start\_softclock (sys/kern/kern\_timeout.c:372)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    netisr_init
+    start_softintr
+    start_softclock <-- Here
+```
+
+#### rss\_init (sys/net/rss\_config.c:173)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    netisr_init
+    start_softintr
+    start_softclock
+    rss_init <-- Here
+```
+
+#### init\_device\_poll (sys/kern/kern\_poll.c:270)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    netisr_init
+    start_softintr
+    start_softclock
+    rss_init
+    init_device_poll <-- Here
+```
+
+#### tcp\_hpts\_modevent (sys/netinet/tcp\_hpts.c:2068)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    netisr_init
+    start_softintr
+    start_softclock
+    rss_init
+    init_device_poll
+    tcp_htps_modevent <-- Here
+```
+
+#### sysbeep\_init (sys/kern/kern\_cons.c:694)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    netisr_init
+    start_softintr
+    start_softclock
+    rss_init
+    init_device_poll
+    tcp_htps_modevent
+    sysbeep_init <-- Here
+```
 
 ### SI\_SUB\_DEVFS
 
 ### SI\_SUB\_INIT\_IF
+
+#### hhook\_vnet\_init (sys/kern/kern\_hhook.c:481)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init <-- Here
+```
+
+#### if\_init\_idxtable (sys/net/if.c:424)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init
+    if_init_idxtable <-- Here
+```
+
+#### vnet\_if\_init (sys/net/if.c:433)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init
+    if_init_idxtable
+    vnet_if_init <-- Here
+```
+
+#### xz\_module\_event\_handler (sys/dev/xz/xz\_mod.c:56)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init
+    if_init_idxtable
+    vnet_if_init
+    xz_module_event_handler <-- Here
+```
+
+#### ether\_init (sys/net/if\_ethersubr.c:766)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init
+    if_init_idxtable
+    vnet_if_init
+    xz_module_event_handler
+    ether_init <-- Here
+```
+
+#### iflib\_module\_event\_handler (sys/net/iflib.c:5670)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init
+    if_init_idxtable
+    vnet_if_init
+    xz_module_event_handler
+    ether_init
+    iflib_module_event_handler <-- Here
+```
+
+#### infiniband\_modevent (sys/net/if\_infiniband.c:668)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init
+    if_init_idxtable
+    vnet_if_init
+    xz_module_event_handler
+    ether_init
+    iflib_module_event_handler
+    infiniband_modevent <-- Here
+```
+
+#### firewire\_modevent (sys/net/if\_fwsubr.c:847)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    hhook_vnet_init
+    if_init_idxtable
+    vnet_if_init
+    xz_module_event_handler
+    ether_init
+    iflib_module_event_handler
+    infiniband_modevent <-- Here
+```
 
 ### SI\_SUB\_NETGRAPH
 
@@ -2313,7 +3477,581 @@ mi_startup
 
 ### SI\_SUB\_VFS
 
+#### acl\_nfs4\_modload (sys/kern/subr\_acl\_nfs4.c:1372)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload <-- Here
+```
+
+#### vntblinit (sys/kern/vfs\_subr.c:716)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit <-- Here
+```
+
+#### acl\_posix1e\_modload (sys/kern/subr\_acl\_posix1e.c:642)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload <-- Here
+```
+
+#### nfscl\_modevent (sys/fs/nfsclient/nfs\_clport.c:1425)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent <-- Here
+```
+
+#### nchinit (sys/kern/vfs\_cache.c:2669)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit <-- Here
+```
+
+#### nameiinit (sys/kern/vfs\_lookup.c:175)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit <-- Here
+```
+
+#### vfs\_hashinit (sys/kern/vfs\_hash.c:47)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit <-- Here
+```
+
+#### mq\_modload (sys/kern/uipc\_mqueue.c:2909)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload <-- Here
+```
+
+#### fuse\_loader (sys/fs/fuse/fuse\_main.c:134)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader <-- Here
+```
+
+#### aio\_modload (sys/kern/vfs\_aio.c:371)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload <-- Here
+```
+
+#### soaio\_init (sys/kern/sys\_socket.c:574)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init <-- Here
+```
+
+#### pipeinit (sys/kern/sys\_pipe.c:257)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit <-- Here
+```
+
+#### vfs\_mount\_init (sys/kern/vfs\_mount.c:181)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init <-- Here
+```
+
+#### vfs\_event\_init (sys/kern/vfs\_subr.c:6394)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init <-- Here
+```
+
+#### timerfd\_init (sys/kern/sys\_timerfd.c:105)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init <-- Here
+```
+
+#### svc\_rpc\_gss\_init (sys/rpc/rpcsec\_gss/svc\_rpcsec\_gss.c:204)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init <-- Here
+```
+
+#### krpc\_modevent (sys/rpc/rpc\_generic.c:960)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent <-- Here
+```
+
+#### kgssapi\_modevent (sys/kgssapi/gss\_impl.c:312)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent
+    kgssapi_modevent <-- Here
+```
+
+#### kgssapi\_krb5\_modevent (sys/kgssapi/krb5/k4b5\_mech.c:2100)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent
+    kgssapi_modevent
+    kgssapi_krb5_modevent <-- Here
+```
+
+#### nfslockd\_modevent (sys/nlm/nlm\_prot\_impl.c:2384)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent
+    kgssapi_modevent
+    kgssapi_krb5_modevent
+    nfslockd_modevent <-- Here
+```
+
+#### nfssvc\_modevent (sys/nfs/nfs\_nfssvc.c:119)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent
+    kgssapi_modevent
+    kgssapi_krb5_modevent
+    nfslockd_modevent
+    nfssvc_modevent <-- Here
+```
+
+#### xdr\_modevent (sys/xdr/xdr.c:818)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent
+    kgssapi_modevent
+    kgssapi_krb5_modevent
+    nfslockd_modevent
+    nfssvc_modevent
+    xdr_modevent <-- Here
+
+821: return (0);
+```
+
+#### nfsd\_modevent (sys/fs/nfsserver/nfs\_nfsdport.c:7245)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent
+    kgssapi_modevent
+    kgssapi_krb5_modevent
+    nfslockd_modevent
+    nfssvc_modevent
+    xdr_modevent
+    nfsd_modevent <-- Here
+```
+
+#### nfscommon\_modevent (sys/fs/nfs/nfs\_commonport.c:909)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    acl_nfs4_modload
+    vntblinit
+    acl_posix1e_modload
+    nfscl_modevent
+    nchinit
+    nameiinit
+    vfs_hashinit
+    mq_modload
+    fuse_loader
+    aio_modload
+    soaio_init
+    pipeinit
+    vfs_mount_init
+    vfs_event_init
+    timerfd_init
+    svc_rpc_gss_init
+    krpc_modevent
+    kgssapi_modevent
+    kgssapi_krb5_modevent
+    nfslockd_modevent
+    nfssvc_modevent
+    xdr_modevent
+    nfsd_modevent
+    nfscommon_modevent <-- Here
+```
+
 ### SI\_SUB\_CLOCKS
+
+#### initclocks (sys/kernkern\_clock.c:418)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    initclocks <-- Here
+```
+
+#### inittimecounter (sys/kern/kern\_tc.c:1997)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    initclocks
+    inittimecounter <-- Here
+```
+
+#### sched\_initticks (sys/kern/sched\_4bsd.c:650)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    initclocks
+    inittimecounter
+    sched_initticks <-- Here (4BSD)
+```
+
+#### sched\_initticks (sys/kern/sched\_ule.c:1556)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    initclocks
+    inittimecounter
+    sched_initticks <-- Here (ULE)
+```
+
+#### e1000\_enable\_pause\_delay (sys/dev/e1000/e1000\_osdep.c:40)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    initclocks
+    inittimecounter
+    sched_initticks (ULE)
+    e1000_enable_pause_delay <-- Here
+```
+
+#### zfs\_modevent (sys/contrib/openzfs/module/os/freebsd/zfs/kmod\_core.c:303)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    initclocks
+    inittimecounter
+    sched_initticks (ULE)
+    e1000_enable_pause_delay
+    zfs_modevent <-- Here
+```
+
+#### deadlkres (sys/kern/kern\_clock.c:240)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    initclocks
+    inittimecounter
+    sched_initticks (ULE)
+    e1000_enable_pause_delay
+    zfs_modevent
+    deadlkres <-- Here (kthread_start)
+```
 
 ### SI\_SUB\_PSEUDO
 
@@ -2324,6 +4062,8 @@ mi_startup
 ### SI\_SUB\_PROTO\_PFIL
 
 ### SI\_SUB\_IF
+
+Nothing here surprisingly 
 
 ### SI\_SUB\_DOMAININIT
 
@@ -2365,6 +4105,7 @@ mi_startup
     selectinit
     sctp_syscalls_init <-- Here
 ```
+
 ### SI\_SUB\_VNET\_DONE
 
 #### nfs\_vnetinit (sys/fs/nfs/nfs\_commonport.c:874)
