@@ -4057,9 +4057,362 @@ mi_startup
 
 ### SI\_SUB\_EXEC
 
+#### sysinit\_register\_elf64\_brand\_entries (sys/amd64/amd64/elf\_machdep.c:205)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries <-- Here
+```
+
+#### shared\_page\_init (sys/kern/kern\_sharedpage.c:115)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init <-- Here
+```
+
+#### pfs\_modevent (sys/fs/pseudofs/pseudofs.c:487)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent <-- Here
+```
+
+#### imgact\_binmisc\_init (sys/kern/imgact\_binmisc.c:747)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init <-- Here
+```
+
+#### cxgbei\_modevent (sys/dev/cxgbe/cxgbei/cxgbei.c:943)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init <-- Here
+```
+
+#### mod\_event (sys/dev/cxgbe/if\_ccv.c:34)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event <-- Here
+
+37: return (0);
+```
+
+#### mod\_event (sys/dev/cxgbe/if\_cc.c:34)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event <-- Here
+
+37: return (0);
+```
+
+#### mod\_event (sys/dev/cxgbe/if\_cxl.c:34)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event <-- Here
+
+37: return (0);
+```
+
+#### mod\_event (sys/dev/cxgbe/if\_cxlv.c:34)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event <-- Here
+
+37: return (0);
+```
+
+#### c4iw\_modevent (sys/dev/cxgbe/iw\_cxgbe/device.c:429)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent <-- here
+```
+
+#### t4\_tom\_modevent (sys/dev/cxgbe/tom/t4\_tom.c:2295)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent <-- Here
+```
+
+#### toecore\_mod\_handler (sys/netinet/toecore.c:585)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler <-- Here
+```
+
+#### ia32\_syscall\_enable (sys/amd64/ia32/ia32\_syscall.c:249)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler
+    ia32_syscall_enable <-- Here
+```
+
+#### amd64\_init\_sysvecs (sys/amd64/amd64/elf\_machdep.c:144)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler
+    ia32_syscall_enable
+    amd64_init_sysvecs <-- Here
+```
+
+#### i386\_setup\_lcall\_gate (sys/i386/i386/machdep.c:1702)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler
+    ia32_syscall_enable
+    amd64_init_sysvecs
+    i386_setup_lcall_gate <-- Here
+```
+
+#### aout\_sysent (sys/kern/imgact\_aout.c:155)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler
+    ia32_syscall_enable
+    amd64_init_sysvecs
+    i386_setup_lcall_gate
+    aout_sysent <-- Here
+```
+
+#### exec\_prealloc\_args\_kva (sys/kern/kern\_exec.c:1402)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler
+    ia32_syscall_enable
+    amd64_init_sysvecs
+    i386_setup_lcall_gate
+    aout_sysent
+    exec_prealloc_args_kva <-- Here
+```
+
+#### register\_compat32\_feature (sys/compat/freebsd32/freebsd32\_misc.c:129)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler
+    ia32_syscall_enable
+    amd64_init_sysvecs
+    i386_setup_lcall_gate
+    aout_sysent
+    exec_prealloc_args_kva
+    register_compat32_feature <-- Here
+```
+
+#### fxrng\_vdso\_sysinit (sys/dev/random/fenestrasX/fx\_brng.c:145)
+
+```txt
+control flow:
+mi_startup
+    ...
+    sysinit_register_elf64_brand_entries
+    shared_page_init
+    pfs_modevent
+    imgact_binmisc_init
+    mod_event
+    mod_event
+    mod_event
+    mod_event
+    c4iw_modevent
+    t4_tom_modevent
+    toecore_mod_handler
+    ia32_syscall_enable
+    amd64_init_sysvecs
+    i386_setup_lcall_gate
+    aout_sysent
+    exec_prealloc_args_kva
+    register_compat32_feature
+    fxrng_vdso_sysinit <-- Here
+```
+
 ### SI\_SUB\_PROTO\_BEGIN
 
+#### cdg\_init\_vnet (sys/netinet/cc/cc\_cdg.c:245)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    cdg_init_vnet <-- Here
+```
+
 ### SI\_SUB\_PROTO\_PFIL
+
+#### pfil\_init (sys/net/pfil.c:526)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    pfil_init <-- Here
+```
 
 ### SI\_SUB\_IF
 
@@ -4067,23 +4420,302 @@ Nothing here surprisingly
 
 ### SI\_SUB\_DOMAININIT
 
+Nothing here surprisingly 
+
 ### SI\_SUB\_MC
+
+Nothing here surprisingly 
 
 ### SI\_SUB\_DOMAIN
 
+Nothing here surprisingly 
+
 ### SI\_SUB\_FIREWALL
+
+#### ipfw\_modevent (sys/netpfil/ipfw/ip\_fw2.c:3644)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_modevent <-- Here
+```
+
+#### ipfw\_init (sys/netpfil/ipfw/ip\_fw2.c:3438)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_modevent
+    ipfw_init <-- Here
+```
+
+#### vnet\_ipfw\_init (sys/netpfil/ipfw/ip\_fw2.c:3507)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_modevent
+    ipfw_init
+    vnet_ipfw_init <-- Here
+```
+
+#### ipfw\_nat\_modevent (sys/netpfil/ipfw/ip\_fw\_nat.c:1202)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_modevent
+    ipfw_init
+    vnet_ipfw_init
+    ipfw_nat_modevent <-- Here
+```
+
+#### ipfw\_nat\_init (sys/netpfil/ipfw/ip\_fw\_nat.c:1170)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_modevent
+    ipfw_init
+    vnet_ipfw_init
+    ipfw_nat_modevent
+    ipfw_nat_init <-- Here
+```
+
+#### vnet\_ipfw\_nat\_init (sys/netpfil/ipfw/ip\_fw\_nat.c:1144)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_modevent
+    ipfw_init
+    vnet_ipfw_init
+    ipfw_nat_modevent
+    ipfw_nat_init
+    vnet_ipfw_nat_init <-- Here
+
+1147: V_ipfw_nat_ready = 1;
+
+1148: return (0);
+```
 
 ### SI\_SUB\_IFATTACHDOMAIN
 
+#### ipfw\_pmod\_modevent (sys/netpfil/ipfw/pmod/ip\_fw\_pmod.c:66)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_pmod_modevent <-- Here
+```
+
+#### vnet\_ipfw\_pmod\_init (sys/netpfil/ipfw/pmod/ip\_fw\_pmod.c:49)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_pmod_modevent
+    vnet_ipfw_pmod_init <-- Here
+```
+
+#### ipfw\_nptv6\_modevent (sys/netpfil/ipfw/nptv6/ip\_fw\_nptv6.c:64)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_pmod_modevent
+    vnet_ipfw_pmod_init
+    ipfw_nptv6_modevent <-- Here
+```
+
+#### vnet\_ipfw\_nptv6\_init (sys/netpfil/ipfw/nptv6/ip\_fw\_nptv6.c:49)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_pmod_modevent
+    vnet_ipfw_pmod_init
+    ipfw_nptv6_modevent
+    vnet_ipfw_nptv6_init <-- Here
+```
+
+#### ipfw\_nat64\_modevent (sys/netpfil/ipfw/nat64/ip\_fw\_nat64.c:119)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_pmod_modevent
+    vnet_ipfw_pmod_init
+    ipfw_nptv6_modevent
+    vnet_ipfw_nptv6_init
+    ipfw_nat64_modevent <-- Here
+```
+
+#### vnet\_ipfw\_nat64\_init (sys/netpfil/ipfw/nat64/ip\_fw\_nat64.c:78)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    ipfw_pmod_modevent
+    vnet_ipfw_pmod_init
+    ipfw_nptv6_modevent
+    vnet_ipfw_nptv6_init
+    ipfw_nat64_modevent
+    vnet_ipfw_nat64_init <-- Here
+```
+
 ### SI\_SUB\_PROTO\_END
+
+Nothing here surprisingly 
 
 ### SI\_SUB\_KICK\_SCHEDULER
 
+#### usb\_dev\_init\_post (sys/dev/usb/usb\_dev.c:977)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post <-- Here
+```
+
+#### sync\_setup (sys/kern/kern\_sync.c:655)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post
+    sync_setup <-- Here
+```
+
+#### ena\_rss\_init\_default\_deferred (sys/dev/ena/ena\_rss.c:197)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post
+    sync_setup
+    ena_rss_init_default_deferred <-- Here
+```
+
+#### usb\_needs\_explore\_init (sys/dev/usb/usb\_hub.c:2349)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post
+    sync_setup
+    ena_rss_init_default_deferred
+    usb_needs_explore_init <-- Here
+```
+
+#### random\_kthread (sys/dev/random/random\_harvsetq.c:180)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post
+    sync_setup
+    ena_rss_init_default_deferred
+    usb_needs_explore_init
+    random_kthread <-- Here (krpoc_start)
+```
+
+#### acpi\_taskq\_init (sys/dev/acpica/Osd/OsdSchedule.c:109)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post
+    sync_setup
+    ena_rss_init_default_deferred
+    usb_needs_explore_init
+    random_kthread
+    acpi_taskq_init <-- Here
+```
+
+#### acpi\_tz\_startup (sys/dev/acpica/acpi\_thermal.c:331)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post
+    sync_setup
+    ena_rss_init_default_deferred
+    usb_needs_explore_init
+    random_kthread
+    acpi_taskq_init
+    acpi_tz_startup <-- Here
+```
+
+#### mca\_startup (sys/x86/x86/mca.c:1067)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    usb_dev_init_post
+    sync_setup
+    ena_rss_init_default_deferred
+    usb_needs_explore_init
+    random_kthread
+    acpi_taskq_init
+    acpi_tz_startup
+    mca_startup <-- Here
+```
+
 ### SI\_SUB\_INIT\_CONFIG\_HOOKS
+
+Nothing here surprisingly
 
 ### SI\_SUB\_ROOT\_CONF
 
+#### nfs\_rootconf (sys/nfs/nfs\_diskless.c:433)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nfs_rootconf <-- Here
+```
+
+#### bootpc\_init (sys/nfs/bootp\_subr.c:1512)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    bootpc_init <-- Here
+```
+
 ### SI\_SUB\_INTRINSIC\_POST
+
+#### proc0\_post (sys/kern/init\_main.c:652)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    proc0_post <-- Here
+```
 
 ### SI\_SUB\_SYSCALLS
 
@@ -4345,6 +4977,8 @@ mi_startup
 ```
 
 ### SI\_SUB\_IDLE
+
+Nothing here surprisingly
 
 ### SI\_SUB\_RACCTD
 
