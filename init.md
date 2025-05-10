@@ -3362,6 +3362,48 @@ mi_startup
 
 ### SI\_SUB\_DEVFS
 
+#### cuse\_modevent (sys/fs/cuse/cuse.c:78)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    cuse_modevent <-- Here
+```
+
+#### devfs\_devs\_init (sys/fs/devfs/devfs\_devs.c:745)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    cuse_modevent
+    devfs_devs_init <-- Here
+```
+
+#### reroot\_conf (sys/kern/kern\_shutdown.c:280)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    cuse_modevent
+    devfs_devs_init
+    reroot_conf <-- Here
+```
+
+#### cuse\_kern\_init (sys/fs/cuse/cuse.c:296)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    cuse_modevent
+    devfs_devs_init
+    reroot_conf
+    cuse_kern_init <-- Here
+```
+
 ### SI\_SUB\_INIT\_IF
 
 #### hhook\_vnet\_init (sys/kern/kern\_hhook.c:481)
