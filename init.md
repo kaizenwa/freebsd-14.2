@@ -1,3 +1,12 @@
+## Walkthrough of FreeBSD 14.2's Boot Code
+
+#### mi\_startup (sys/kern/init\_main.c:260)
+
+```txt
+Control Flow:
+mi_startup <-- Here
+```
+
 ### SI\_SUB\_TUNABLES
 
 #### madt\_register (sys/x86/acpica/madt.c:325)
