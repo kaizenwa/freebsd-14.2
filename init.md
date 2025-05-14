@@ -19,6 +19,31 @@ mi_startup
 
 Note: madt_enumerator is defined on lines 92-98
       of sys/x86/acpica/madt.c.
+
+328: Calls apic_register_enumerator.
+```
+
+#### apic\_register\_enumerator (sys/x86/x86/local\_apic.c:1823)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    madt_register
+        apic_register_enumerator <-- Here
+
+1834: Calls SLIST_INSERT_HEAD.
+```
+
+#### SLIST\_INSERT\_HEAD (sys/sys/queue.h:267)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    madt_register
+        apic_register_enumerator
+            SLIST_INSERT_HEAD <-- Here
 ```
 
 #### x86\_iommu\_set\_intel (sys/x86/iommu/intel\_drv.c:1330)
@@ -29,6 +54,40 @@ mi_startup
     ...
     madt_register
     x86_iommu_set_intel <-- Here
+
+1332-1333: Calls set_x86_iommu on &dmar_x86_iommu.
+```
+
+#### set\_x86\_iommu (sys/x86/iommu/iommu\_utils.c:252)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    madt_register
+    x86_iommu_set_intel
+        set_x86_iommu <-- Here
+
+254: Calls MPASS.
+
+255: Assigns &dmar_x86_iommu to x86_iommu.
+
+     Note: dmar_x86_iommu is defined on lines
+           1313-1327 in x86/iommu/intel_drv.c. 
+```
+
+#### MPASS (sys/sys/kassert.h:136)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    madt_register
+    x86_iommu_set_intel
+        set_x86_iommu
+            MPASS <-- Here
+
+136: #define MPASS(ex)      MPASS4(ex, #ex, __FILE__, __LINE__)
 ```
 
 #### mptable\_register (sys/x86/x86/mptable.c:472)
@@ -40,6 +99,8 @@ mi_startup
     madt_register
     x86_iommu_set_intel
     mptable_register <-- Here
+
+475: Calls apic_register_enumerator on &mptable_enumerator.
 ```
 
 #### apic\_init (sys/x86/x86/local\_apic.c:1843)
@@ -79,6 +140,43 @@ mi_startup
     apic_init
     acpi_set_debugging
     mp_setmaxid <-- Here
+
+145: Calls cpu_mp_setmaxid.
+
+154: Calls howmany.
+```
+
+#### cpu\_mp\_setmaxid (sys/x86/x86/mp\_x86.c:1017)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    madt_register
+    x86_iommu_set_intel
+    mptable_register
+    apic_init
+    acpi_set_debugging
+    mp_setmaxid
+        cpu_mp_setmaxid <-- Here
+```
+
+#### howmany (sys/sys/param.h:321)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    madt_register
+    x86_iommu_set_intel
+    mptable_register
+    apic_init
+    acpi_set_debugging
+    mp_setmaxid
+        cpu_mp_setmaxid
+        howmany <-- Here
+
+321: #define howmany(x, y)  (((x)+((y)-1))/(y))
 ```
 
 #### tunable\_set\_numzones (sys/kern/kern\_malloc.c:308)
@@ -110,6 +208,27 @@ mi_startup
     mp_setmaxid
     tunable_set_numzones
     init_maxsockets <-- Here
+
+737: Calls imax.
+```
+
+#### imax (sys/sys/libkern.h:90)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    madt_register
+    x86_iommu_set_intel
+    mptable_register
+    apic_init
+    acpi_set_debugging
+    mp_setmaxid
+    tunable_set_numzones
+    init_maxsockets
+        imax <-- Here
+
+90: static __inline int imax(int a, int b) { return (a > b ? a : b); }
 ```
 
 #### inittimehands (sys/kern/kern\_tc.c:1974)
