@@ -2234,6 +2234,147 @@ mi_startup
 
 ### SI\_SUB\_RANDOM
 
+#### fxrng\_init\_alg (sys/dev/random/fenestrasX/fx\_main.c:277)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    fxrng_init_alg <-- Here
+```
+
+#### random\_fortuna\_init\_alg (sys/dev/random/fortuna.c:277)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_fortuna_init_alg <-- Here
+```
+
+#### random\_other\_init\_alg (sys/dev/random/other\_algorithm.c:115)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_other_init_alg <-- Here
+```
+
+#### random\_alg\_context\_init (sys/dev/random/randomdev.c:92)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_alg_context_init <-- Here
+```
+
+#### random\_harvestq\_init (sys/dev/random/random\_harvestq.c:428)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_alg_context_init
+    random_harvestq_init <-- Here
+```
+
+#### nehemiah\_modevent (sys/dev/random/nehemiah.c:95)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_alg_context_init
+    random_harvestq_init
+    nehemiah_modevent <-- Here
+```
+
+#### darn\_modevent (sys/dev/random/darn.c:109)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_alg_context_init
+    random_harvestq_init
+    nehemiah_modevent
+    darn_modevent <-- Here
+```
+
+#### rndr\_modevent (sys/dev/random/armv8rng.c:93)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_harvestq_init
+    nehemiah_modevent
+    darn_modevent
+    rndr_modevent <-- Here
+```
+
+#### rdrand\_modevent (sys/dev/random/ivy.c:160)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    nehemiah_modevent
+    darn_modevent
+    rndr_modevent
+    rndrand_modevent <-- Here
+```
+
+#### random\_harvestq\_prime (sys/dev/random/random\_harvestq.c:498)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    darn_modevent
+    rndr_modevent
+    rndrand_modevent
+    random_harvestq_prime <-- Here
+```
+
+#### hashrandom\_init (sys/dev/mlx4/mlx4\_en\_tx.c:597)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    rndr_modevent
+    rndrand_modevent
+    random_harvestq_prime
+    hashrandom_init <-- Here
+```
+
+#### mlx5e\_hash\_init (sys/dev/mlx6/mlx6\_en/mlx5\_en\_tx.c:80)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    rndrand_modevent
+    random_harvestq_prime
+    hashrandom_init
+    mlx5e_hash_init <-- Here
+```
+
+#### \_\_stack\_chk\_init (sys/kern/stack\_protector.c:19)
+
+```txt
+Control Flow:
+mi_startup
+    ...
+    random_harvestq_prime
+    hashrandom_init
+    mlx5e_hash_init
+    __stack_chk_inti <-- Here
+```
+
 ### SI\_SUB\_MAC
 
 #### mac\_init (sys/security/mac/mac\_framework.c:318)
